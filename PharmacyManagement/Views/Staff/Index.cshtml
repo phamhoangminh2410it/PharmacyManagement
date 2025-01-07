@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="d-flex justify-content-between align-items-center">
+    Danh sách nhân viên
+    <button type="button" class="btn btn-primary" id="openModal">Thêm nhân viên</button>
+</h2>
+<p></p>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" id="searchInput">
+    <button class="btn btn-primary" type="button" id="searchButton">
+        <i class="fas fa-search"></i> Tìm kiếm
+    </button>
+</div>
+<p></p>
+<div class="table-responsive">
+    <table class="table table-bordered table-vcenter table-hover table-normap table-input">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Mã nhân viên</th>
+                <th class="text-center">Tên nhân viên</th>
+                <th class="text-center">Địa chỉ</th>
+                <th class="text-center">Số điện thoại</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">CMND</th>
+                <th class="text-center">Tên đăng nhập</th>
+                <th class="text-center">Mật khẩu</th>
+                <th class="text-center">ID Chức vụ</th>
+                <th class="text-center">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thêm nhân viên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form -->
+                <form id="formModal">
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="inputID" placeholder="Nhập id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Mã nhân viên</label>
+                        <input type="text" class="form-control" id="inputMa" placeholder="Nhập mã nhân viên" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Tên nhân viên</label>
+                        <input type="text" class="form-control" id="inputTen" placeholder="Nhập tên nhân viên" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="inputDC" placeholder="Nhập địa chỉ" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="inputSDT" placeholder="Nhập số điện thoại" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Nhập email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Chứng minh nhân dân</label>
+                        <input type="text" class="form-control" id="inputCMND" placeholder="Nhập chứng minh nhân dân" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="inputTenDN" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Mật khẩu</label>
+                        <input type="text" class="form-control" id="inputMK" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Thời gian sản xuất</label>
+                        <input type="text" class="form-control" id="inputTGSX" placeholder="Nhập thời gian sản xuất" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Thời gian sử dụng</label>
+                        <input type="text" class="form-control" id="inputTGSD" placeholder="Nhập thời gian sử dụng" required>
+                    </div><div class="mb-3">
+                        <label for="inputName" class="form-label">ID loại sản phẩm</label>
+                        <input type="text" class="form-control" id="inputIDLSP" placeholder="Nhập ID loại sản phẩm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">ID chức vụ</label>
+                        <input type="text" class="form-control" id="inputCV" placeholder="Nhập ID chức vụ" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary" id="submitForm">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#openModal').click(function() {
+            $('#staticBackdrop').modal('show');
+        });
+    });
+</script>
