@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="d-flex justify-content-between align-items-center">
+    Danh sách phiếu xuất chi tiết
+    <button type="button" class="btn btn-primary" id="openModal">Thêm phiếu xuất chi tiết</button>
+</h2>
+<p></p>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" id="searchInput">
+    <button class="btn btn-primary" type="button" id="searchButton">
+        <i class="fas fa-search"></i> Tìm kiếm
+    </button>
+</div>
+<p></p>
+<div class="table-responsive">
+    <table class="table table-bordered table-vcenter table-hover table-normap table-input">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">ID sản phẩm</th>
+                <th class="text-center">Số lượng</th>
+                <th class="text-center">Giá xuất</th>
+                <th class="text-center">Thành tiền</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thêm phiếu xuât chi tiết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form -->
+                <form id="formModal">
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="inputID" placeholder="Nhập id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">ID sản phẩm</label>
+                        <input type="text" class="form-control" id="inputIDSP" placeholder="Nhập id sản phẩm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Số lượng</label>
+                        <input type="text" class="form-control" id="inputSL" placeholder="Nhập số lượng" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Giá xuất</label>
+                        <input type="text" class="form-control" id="inputGX" placeholder="Nhập giá xuất" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Thành tiền</label>
+                        <input type="text" class="form-control" id="inputTT" placeholder="Nhập thành tiền" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary" id="submitForm">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#openModal').click(function() {
+            $('#staticBackdrop').modal('show');
+        });
+    });
+</script>

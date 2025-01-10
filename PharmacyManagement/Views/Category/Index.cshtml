@@ -16,7 +16,7 @@
 </div>
 <p></p>
 <div class="table-responsive">
-    <table class="table table-bordered table-vcenter table-hover table-normap table-input">
+    <table class="table table-bordered table-vcenter table-hover table-normap table-input" id="data-table">
         <thead>
             <tr>
                 <th class="text-center">ID</th>
@@ -62,7 +62,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-primary" id="submitForm">Xác nhận</button>
+                <button type="submit" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -75,5 +75,114 @@
         $('#openModal').click(function() {
             $('#staticBackdrop').modal('show');
         });
+
+        const apiReadUrl = "https://localhost:7038/Api/Category/Read";
+        const apiModifyUrl = "https://localhost:7038/Api/Category/Modify";
+        const apiDeleteUrl = "https://localhost:7038/Api/Category/Delete";
+
+        // Show data
+        function displayData(data) {
+            const tbody = $("#data-table tbody");
+            tbody.empty();
+            data.forEach(item => {
+                console.log(item);
+                tbody.append(`
+                                        <tr>
+                                            <td class="text-center">${item.id}</td>
+                                            <td class="text-center">${item.maloaisanpham}</td>
+                                            <td class="text-center">${item.tenloaisanpham}</td>
+                                            <td class="text-center">${item.phantramloinhuan}</td>
+                                            <td class="text-center"><button class="Delete" data-id="${item.id}">Xóa</button></td>
+                                        </tr>
+                                        `);
+            });
+        }
+
+        // Get data
+        function getData() {
+            $.ajax({
+                url: apiReadUrl,
+                method: "POST",
+                success: function (data) {
+                    console.log(data);
+                    displayData(data);
+                },
+                error: function (error) {
+                    console.error("Lỗi 500", error);
+                }
+            });
+        }
+
+        // Add data
+        $("#formModal").on("submit", function (event) {
+            event.preventDefault(); // Ngăn chặn reload trang
+            const newProduct = {
+                id: $("#inputID").val(),
+                maloaisanpham: $('#inputMa').val(),
+                tenloaisanpham: $('#inputTen').val(),
+                phantramloinhuan: $('#inputLN').val(),
+            };
+
+            $.ajax({
+                url: apiModifyUrl,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(newProduct),
+                success: function (result) {
+                    alert('thêm thành công!');
+                    getData();
+                },
+                error: function (xhr, status, error) {
+                    alert('Lỗi khi thêm: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Update data
+        $("#formModal").on("submit", function (event) {
+            event.preventDefault(); // Ngăn chặn reload trang
+            const newProduct = {
+                id: $("#inputID").val(),
+                maloaisanpham: $('#inputMa').val(),
+                tenloaisanpham: $('#inputTen').val(),
+                phantramloinhuan: $('#inputLN').val(),
+            };
+
+            $.ajax({
+                url: apiModifyUrl,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(newProduct),
+                success: function (result) {
+                    alert('cập nhật thành công!');
+                    getData();
+                },
+                error: function (xhr, status, error) {
+                    alert('Lỗi khi cập nhật: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Delete data
+        $(document).on("click", ".Delete", function () {
+            const id = $(this).data("id"); // Lấy giá trị của data-id từ nút bấm
+            if (confirm(`Bạn có chắc chắn muốn xóa mục với ID ${id}?`)) {
+                $.ajax({
+                    url: `${apiDeleteUrl}/${id}`, // URL xóa tài nguyên
+                    type: 'DELETE',
+                    success: function (result) {
+                        alert('Mục đã được xóa thành công!');
+                        // Cập nhật lại danh sách dữ liệu
+                        getData();
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Lỗi khi xóa mục: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
+
+
+        getData();
     });
 </script>

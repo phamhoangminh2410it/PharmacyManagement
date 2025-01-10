@@ -17,7 +17,7 @@
         body {
             display: flex;
             margin: 0;
-            height: 100vh; /* Đảm bảo chiều cao bằng viewport */
+            height: 150vh; /* Đảm bảo chiều cao bằng viewport */
         }
 
         .sidebar {
@@ -147,46 +147,64 @@
             @Html.ActionLink("Trang chủ", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })<br>
 
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="inventoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Quản lý giao dịch
-                </a>
-                <div class="dropdown-menu" aria-labelledby="inventoryDropdown">
-                    @Html.ActionLink("Giao dịch cho thuê", "Index", "transactionBorrow", new { area = "" }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("Giao dịch trả sách", "Index", "transactionReturn", new { area = "" }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("Nhập kho", "Index", "ImportRepositories", new { area = "" }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("Xuất kho", "Index", "ExportRepositories", new { area = "" }, new { @class = "dropdown-item" })
-                </div>
-            </div><br>
-
-            <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý chức vụ", "Index", "Position", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Nhân viên", "Index", "Staff", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý loại sản phẩm", "Index", "Category", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Chức vụ", "Index", "Position", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý phiếu chi", "Index", "PaymentSlip", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Sản phẩm", "Index", "Product", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý sản phẩm", "Index", "Product", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Loại sản phẩm", "Index", "Category", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý nhà cung cấp", "Index", "Supplier", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Nhà cung cấp", "Index", "Supplier", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý nhân viên", "Index", "Staff", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Phiếu nhập", "Index", "ImportSlip", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
             <div class="nav-item dropdown">
-                @Html.ActionLink("Quản lý kho", "Index", "Inventories", new { area = "" }, new { @class = "nav-link" })<br>
+                @Html.ActionLink("Phiếu nhập chi tiết", "Index", "ImportSlipDetail", new { area = "" }, new { @class = "nav-link" })<br>
             </div>
 
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu xuất", "Index", "ExportSlip", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
 
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu xuất chi tiết", "Index", "ExportSlipDetail", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu kiểm kho", "Index", "InventorySlip", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu kiểm kho chi tiết", "Index", "InventorySlipDetail", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu bán sản phẩm", "Index", "ProductSaleSlip", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu bán sản phẩm chi tiết", "Index", "ProductSaleSlipDetail", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu đổi trả", "Index", "ReturnSlip", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
+
+            <div class="nav-item dropdown">
+                @Html.ActionLink("Phiếu chi", "Index", "PaymentSlip", new { area = "" }, new { @class = "nav-link" })<br>
+            </div>
 
         </div>
     </div>

@@ -13,6 +13,15 @@ builder.Services.AddScoped<IPaymentSlipServices, PaymentSlipServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<IStaffServices, StaffServices>();
 builder.Services.AddScoped<ISupplierServices, SupplierServices>();
+builder.Services.AddScoped<IImportSlipServices, ImportSlipServices>();
+builder.Services.AddScoped<IImportSlipDetailServices, ImportSlipDetailServices>();
+builder.Services.AddScoped<IExportSlipServices, ExportSlipServices>();
+builder.Services.AddScoped<IExportSlipDetailServices, ExportSlipDetailServices>();
+builder.Services.AddScoped<IProductSaleSlipServices, ProductSaleSlipServices>();
+builder.Services.AddScoped<IProductSaleSlipDetailServices, ProductSaleSlipDetailServices>();
+builder.Services.AddScoped<IReturnSlipServices, ReturnSlipServices>();
+builder.Services.AddScoped<IInventorySlipServices, InventorySlipServices>();
+builder.Services.AddScoped<IInventorySlipDetailServices, InventorySlipDetailServices>();
 
 builder.Services.AddDbContext<PharmacyManagementContext>(c =>
         c.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
@@ -36,11 +45,15 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "dashboard",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+    name: "home",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+/*app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");*/
 
 app.MapControllerRoute(
     name: "staff",
@@ -65,5 +78,41 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "category",
     pattern: "{controller=Category}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "importslip",
+    pattern: "{controller=ImportSlip}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "importslipdetail",
+    pattern: "{controller=ImportSlipDetail}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "exportslip",
+    pattern: "{controller=ExportSlip}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "exportslipdetail",
+    pattern: "{controller=ExportSlipDetail}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "productsaleslip",
+    pattern: "{controller=ProductSaleSlip}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "productsaleslipdetail",
+    pattern: "{controller=ProductSaleSlipDetail}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "returnslip",
+    pattern: "{controller=ReturnSlip}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "inventoryslip",
+    pattern: "{controller=InventorySlip}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "inventoryslipdetail",
+    pattern: "{controller=InventorySlipDetail}/{action=Index}/{id?}");
 
 app.Run();
